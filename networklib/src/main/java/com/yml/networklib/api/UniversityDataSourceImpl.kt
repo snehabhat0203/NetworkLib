@@ -17,8 +17,8 @@ class UniversityDataSourceImpl : UniversityDataSource {
                 emit(APIResponse.Success(result))
             }
         }
-    }.catch {
-        emit(APIResponse.Error("Error thrown"))
+    }.catch { exception ->
+        emit(APIResponse.Error(exception.localizedMessage))
     }
 
 }

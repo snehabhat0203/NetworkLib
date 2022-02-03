@@ -1,5 +1,6 @@
 package com.yml.networklibpoc.data.repository
 
+import android.util.Log
 import com.yml.networklib.api.UniversityDataSource
 import com.yml.networklib.model.APIResponse
 import com.yml.networklibpoc.data.mapper.getUiModel
@@ -21,7 +22,7 @@ class UniversityRepositoryImpl @Inject constructor(private val universityDataSou
                     }
                 }
                 is APIResponse.Error -> {
-                    //Nothing
+                    Log.e("Error: ", response.errorMessage)
                 }
                 else -> {
                     //Nothing
