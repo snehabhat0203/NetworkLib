@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'kotlinx-serialization'
+    id 'maven-publish'
 }
 
 android {
@@ -54,4 +55,24 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
 
+}
+
+apply from: '../publishLocal.gradle'
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            // Specify own groupId as package name of your library,
+            // otherwise it would just use project's name (=name of the root directory) by default.
+            groupId 'com.yml.networklib'
+
+            // Specify custom artifactId if needed,
+            // otherwise it would use module's name by default.
+            //artifactId 'custom-artifact'
+
+            // You can specify custom version,
+            // otherwise it would use version from `android { defaultConfig { ... } }` by default.
+            //version = '1.0'
+        }
+    }
 }
